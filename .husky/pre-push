@@ -1,0 +1,3 @@
+npm run build
+npm run test -w=@trigenia-labs/fastify-error-handler
+npm run test -w=@trigenia-labs/fastify-logging-wrapper

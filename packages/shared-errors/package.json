@@ -1,0 +1,23 @@
+{
+    "name": "@trigenia-labs/shared-errors",
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "type": "module",
+    "private": true,
+    "author": {
+        "name": "Andrea Romanello",
+        "email": "a.romanello@trigenia.it"
+    },
+    "scripts": {
+        "build": "rm -rf dist tsconfig.prod.tsbuildinfo tsconfig.tsbuildinfo && tsc -p tsconfig.prod.json"
+    },
+    "keywords": [],
+    "description": "",
+    "dependencies": {
+        "http-errors": "^2.0.0"
+    },
+    "devDependencies": {
+        "@types/http-errors": "^2.0.4"
+    }
+}
