@@ -15,7 +15,7 @@
     },
     "description": "Normalize the error handling of errors with related logs",
     "dependencies": {
-        "@trigenia-labs/fastify-logging-wrapper": "^5.0.2",
+        "@trigenia-labs/fastify-logging-wrapper": "^5.0.0",
         "@trigenia-labs/shared-errors": "^1.0.0",
         "fastify": "^5.0.0"
     },

@@ -6,9 +6,7 @@
     "name": "Andrea Romanello",
     "email": "a.romanello@trigenia.it"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "scripts": {
     "build": "npm run build --ws",
     "publish": "lerna publish --no-private",
