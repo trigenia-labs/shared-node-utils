@@ -2,3 +2,5 @@ node_modules
 *.tsbuildinfo
 dist
 results.xml
+.npmrc
+package-lock.json
