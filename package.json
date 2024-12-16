@@ -1,0 +1,39 @@
+{
+  "name": "shared-node-utils",
+  "description": "Group of Node.js utils projects used in the trigenia-labs projects",
+  "version": "1.0.0",
+  "private": true,
+  "keywords": [],
+  "license": "ISC",
+  "author": {
+    "name": "Andrea Romanello",
+    "email": "a.romanello@trigenia.it"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": {
+    "url": "https://github.com/trigenia-labs/shared-node-utils.git"
+  },
+  "scripts": {
+    "build": "npm run build --ws",
+    "prepare": "husky",
+    "check:formatting": "biome format",
+    "fix:formatting": "biome format --write",
+    "check:linting": "biome lint",
+    "fix:linting": "biome lint --write",
+    "test": "npm run test -w=@trigenia-labs/fastify-error-handler && npm run test -w=@trigenia-labs/fastify-logging-wrapper && npm run test -w=@trigenia-labs/api-auth",
+    "prepublishOnly": "npm i && npm run build && npm run test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@types/node": "^22.10.2",
+    "@vitest/coverage-istanbul": "^2.1.8",
+    "commitlint": "^19.6.0",
+    "husky": "^9.1.7",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "packageManager": "pnpm@9.13.2"
+}
