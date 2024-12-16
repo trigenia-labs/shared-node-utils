@@ -2,7 +2,6 @@
   "name": "shared-node-utils",
   "description": "Group of Node.js utils projects used in the trigenia-labs projects",
   "version": "1.0.0",
-  "private": true,
   "keywords": [],
   "license": "ISC",
   "author": {
