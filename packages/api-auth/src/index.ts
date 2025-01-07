@@ -84,10 +84,16 @@ export const checkPermissions = async (
   };
   const scopesMap = getMapFromScope(scope);
 
-  const grantAccess =
-    matchConfig.method === 'AND'
-      ? requiredPermissions.every((p) => validatePermission(p, scopesMap))
-      : requiredPermissions.some((p) => validatePermission(p, scopesMap));
+  let grantAccess = false;
+
+  if (requiredPermissions.length === 0) {
+    grantAccess = true;
+  } else {
+    grantAccess =
+      matchConfig.method === 'AND'
+        ? requiredPermissions.every((p) => validatePermission(p, scopesMap))
+        : requiredPermissions.some((p) => validatePermission(p, scopesMap));
+  }
 
   if (!grantAccess) {
     throw httpErrors.forbidden();
@@ -135,6 +141,16 @@ export const checkPermissionsPlugin = async (
         );
         req.userData = userData;
       } catch (e) {
+        if (
+          e instanceof Error &&
+          'code' in e &&
+          e.code === 'ERR_JWT_CLAIM_VALIDATION_FAILED'
+        ) {
+          throw httpErrors.unauthorized(e.message);
+        }
+        if (e instanceof Error && 'code' in e && e.code === 'ERR_JWT_EXPIRED') {
+          throw httpErrors.unauthorized(e.message);
+        }
         throw httpErrors.createError(403, getErrorMessage(e), { parent: e });
       }
     },
