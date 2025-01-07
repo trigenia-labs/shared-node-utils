@@ -1,22 +1,22 @@
-import type {
-  FastifyError,
-  FastifyRequest,
-  FastifyInstance,
-  FastifyReply,
-} from 'fastify';
-import type { FastifySchemaValidationError } from 'fastify/types/schema.js';
+import { type HttpError, httpErrors } from '@fastify/sensible';
 import {
-  setLoggingContext,
-  getLoggingContextError,
   LogMessages,
+  getLoggingContextError,
+  setLoggingContext,
 } from '@trigenia-labs/fastify-logging-wrapper';
 import {
   type HttpErrorClasses,
   type ValidationErrorData,
   parseHttpErrorClass,
 } from '@trigenia-labs/shared-errors';
+import type {
+  FastifyError,
+  FastifyInstance,
+  FastifyReply,
+  FastifyRequest,
+} from 'fastify';
+import type { FastifySchemaValidationError } from 'fastify/types/schema.js';
 import { isHttpError } from 'http-errors';
-import { type HttpError, httpErrors } from '@fastify/sensible';
 
 export interface OutputHttpError {
   code: HttpErrorClasses;
