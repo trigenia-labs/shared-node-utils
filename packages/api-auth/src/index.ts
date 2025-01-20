@@ -35,12 +35,16 @@ const decodeLogtoToken = async (
   config: {
     jwkEndpoint: string;
     oidcEndpoint: string;
+    audience?: string;
+    algorithms?: string[];
   },
 ) => {
   // Reference: https://docs.logto.io/docs/recipes/protect-your-api/node/
   const jwks = createRemoteJWKSet(new URL(config.jwkEndpoint));
   const { payload } = await jwtVerify(token, jwks, {
     issuer: config.oidcEndpoint,
+    audience: config.audience || undefined,
+    algorithms: config.algorithms || undefined,
   });
   return payload;
 };
@@ -65,6 +69,7 @@ export const checkPermissions = async (
   config: {
     jwkEndpoint: string;
     oidcEndpoint: string;
+    audience?: string;
   },
   requiredPermissions: string[],
   matchConfig = { method: 'OR' },
